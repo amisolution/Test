@@ -1,5 +1,4 @@
 pragma solidity ^0.4.6;
-
 /*
 This creates a public contract in the Ethereum Blockchain. 
 Experimental contract based on https://github.com/Shultzi/Solidity/blob/master/demo.sol
@@ -26,27 +25,13 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <http://unlicense.org>
-Provide 
-
 Challenges of setting contract:
 => Additional TimeFrame of Delivery required
 => Short Contract duration TimeFrame cannot be handled by large mobile carrier.
-=> Mobile Interexchange Platform to be created for each SIM provider 
-
+=> Mobile Interexchange Platform to be created for each SIM provider.
 */
-pragma solidity ^0.4.2;
 
-/*
 
-Provide smart contract interoperability for Fixed and Mobile Carriers 
-as well as Utility Company and or c2c, b2c, b2b interaction.
-Issued to interact with erc20-sim.amisolution.net
-Challenges of setting ERC20 SIM Tokens:
-=> Additional TimeFrame of Delivery required
-=> Short Contract duration TimeFrame cannot be handled by large mobile carrier.
-=> Mobile Interexchange Platform to be created for each SIM provider 
-
-*/
 contract ContractTermination{
 
 	address public owner;
