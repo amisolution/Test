@@ -1,8 +1,9 @@
-pragma solidity ^0.4.2;
+pragma solidity ^0.4.6;
 
 /*
 This creates a public contract in the Ethereum Blockchain. 
 Experimental contract based on https://github.com/Shultzi/Solidity/blob/master/demo.sol
+and partially rewritten by amisolution.
  This contract is intended for testing purposes, you are fully responsible for compliance with
 present or future regulations of finance, communications and the 
 universal rights of digital beings.
@@ -28,6 +29,19 @@ For more information, please refer to <http://unlicense.org>
 Provide 
 
 Challenges of setting contract:
+=> Additional TimeFrame of Delivery required
+=> Short Contract duration TimeFrame cannot be handled by large mobile carrier.
+=> Mobile Interexchange Platform to be created for each SIM provider 
+
+*/
+pragma solidity ^0.4.2;
+
+/*
+
+Provide smart contract interoperability for Fixed and Mobile Carriers 
+as well as Utility Company and or c2c, b2c, b2b interaction.
+Issued to interact with erc20-sim.amisolution.net
+Challenges of setting ERC20 SIM Tokens:
 => Additional TimeFrame of Delivery required
 => Short Contract duration TimeFrame cannot be handled by large mobile carrier.
 => Mobile Interexchange Platform to be created for each SIM provider 
@@ -72,8 +86,6 @@ contract MyUserName is ContractTermination{
 	function MyUserName(string _name){
 
 		userName = _name;
-
-
 	}
 
 	function registerToProvider(address _providerAddress) onlyOwner {
@@ -88,17 +100,18 @@ contract MyUserName is ContractTermination{
 
 	function setDebt(uint256 _debt){
 		if(services[msg.sender].active){
-			services[msg.sender].lastUpdate 	= now;
-			services[msg.sender].debt 			= _debt;
+			services[msg.sender].lastUpdate = now;
+			services[msg.sender].debt 		= _debt;
 
 			}else{
 				throw;
 			}
 	}
-
-
-
-
+	
+	function payToProvider(uint256 _debt, address _providerAddress){
+		_providerAddress.send(services[msg.sender]._debt);
+	}
+	
 	function unsubscribe(address _providerAddress){
 		if(services[_providerAddress].debt == 0){
 			services[_providerAddress].active = false;
@@ -133,8 +146,8 @@ contract MobileProvider is ContractTermination{
 
 	function setDebt(uint256 _debt, address _userAddress){
 
-		MyUserName mediation = MyUserName(_userAddress);
-		mediation.setDebt( _debt);
+		MyUserName imediation = MyUserName(_userAddress);
+		imediation.setDebt(_debt);
 
 	}
 
