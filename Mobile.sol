@@ -3,7 +3,7 @@ pragma solidity ^0.4.8;
 /*
 This creates a public contract in the Ethereum Blockchain. 
 Experimental contract based on https://github.com/Shultzi/Solidity/blob/master/demo.sol
-and partially rewritten by amisolution.
+and partially rewritten by amisolution: https://github.com/amisolution/Test/blob/master/Mobile.sol.
  This contract is intended for testing purposes, you are fully responsible for compliance with
 present or future regulations of finance, communications and the 
 universal rights of digital beings.
