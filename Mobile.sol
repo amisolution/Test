@@ -29,7 +29,7 @@ For more information, please refer to <http://unlicense.org>
 Challenges of setting contract:
 => Additional TimeFrame of Delivery required
 => Short Contract duration TimeFrame cannot be handled by large mobile carrier.
-=> Mobile Interexchange Platform to be created for each SIM provider.
+=> Service Provider Interexchange Platform to be created for each SIM provider.
 */
 
 
