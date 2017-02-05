@@ -32,7 +32,7 @@ Challenges of setting contract:
 */
 
 
-contract ContractTermination{
+contract ContractDestruction{
 
 	address public owner;
 
@@ -56,7 +56,7 @@ contract ContractTermination{
 	}
 }
 
-contract MyUserName is ContractTermination{
+contract MyUserName is ContractDestruction{
 
 	string public userName;
 
@@ -109,22 +109,22 @@ contract MyUserName is ContractTermination{
 
 }
 
-contract MobileProvider is ContractTermination{
+contract ServiceProvider is ContractDestruction{
 
-	string public MobileProvider;
+	string public ServiceProvider;
 	string public operator;
-	string public pwlan;
+	string public cellbill;
 	string public utilitybill;
 	
-	function MobileProvider(
+	function ServiceProvider(
 		string _UserId,
 		string _operator,
-		string _pwlanOffer,
+		string _PayMyCellBill,
 		string _PayMyUtilityBill){
 
 		MobileProvider = _UserId;
 		operator  = _operator;
-		pwlan  = _pwlanOffer;
+		cellbill  = _PayMyCellBill;
 		utilitybill  = _PayMyUtilityBill;
 
 	}
