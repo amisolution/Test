@@ -117,7 +117,8 @@ contract MyUserName is ContractDestruction{
 	}
 	
 	function payToProvider(uint256 _debt, address _providerAddress){
-		_providerAddress.send(services[msg.sender].debt);
+		if (!_providerAddress.send(services[msg.sender].debt))
+		    throw;
 	}
 	
 	function unsubscribe(address _providerAddress){
