@@ -1,4 +1,5 @@
-pragma solidity ^0.4.6;
+pragma solidity ^0.4.9;
+
 /*
 This creates a public contract in the Ethereum Blockchain. 
 Experimental contract based on https://github.com/Shultzi/Solidity/blob/master/demo.sol
@@ -35,6 +36,7 @@ Challenges of setting contract:
 contract ContractDestruction{
 
 	address public owner;
+	uint ownerbalance; 		// TIP: uint is an alias for uint256. Ditto int and int256.
 
 	function mortal(){
 
@@ -54,6 +56,27 @@ contract ContractDestruction{
 
 		suicide(owner);
 	}
+    
+    function ownerBalanceChecker() public 
+    {
+        owner = msg.sender; 								 // msg is a global variable
+        ownerbalance = owner.balance;
+    }
+
+	function getContractAddress() constant returns (address) 
+	{
+		return this;
+	}
+
+	function getOwnerBalanceOld() constant returns (uint)     // Will return the owner's balance AT THE TIME THIS CONTRACT WAS CREATED
+	{
+        return ownerbalance;
+    }
+    
+    function getOwnerBalanceNow() constant returns (uint)  // Will return owner's balance NOW
+    {
+        return owner.balance;
+    }
 }
 
 contract MyUserName is ContractDestruction{
@@ -94,7 +117,7 @@ contract MyUserName is ContractDestruction{
 	}
 	
 	function payToProvider(uint256 _debt, address _providerAddress){
-		_providerAddress.send(services[msg.sender]._debt);
+		_providerAddress.send(services[msg.sender].debt);
 	}
 	
 	function unsubscribe(address _providerAddress){
@@ -122,7 +145,7 @@ contract ServiceProvider is ContractDestruction{
 		string _PayMyCellBill,
 		string _PayMyUtilityBill){
 
-		MobileProvider = _UserId;
+		ServiceProvider = _UserId;
 		operator  = _operator;
 		cellbill  = _PayMyCellBill;
 		utilitybill  = _PayMyUtilityBill;
@@ -136,5 +159,5 @@ contract ServiceProvider is ContractDestruction{
 
 	}
 
-
 }
+
