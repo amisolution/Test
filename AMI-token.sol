@@ -393,4 +393,4 @@ contract AMIS is StandardToken {
         return totalValue;  
     }
 }
-contract AMIS is StandardToken(2000000000, "AMIS", 3, "AMIS") {}
+
