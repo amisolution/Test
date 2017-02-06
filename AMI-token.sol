@@ -219,7 +219,8 @@ contract AMIS is StandardToken {
     uint8  public decimals = 3;
     // Token abbreviation        
     string public symbol = "AMIS";
-    
+    // Token totalSupply
+    uint totalSupply = 2000000000;
     // 1 ether = 2000 AMIS
     uint BASE_PRICE = 2000;
     // 1 ether = 1500 AMIS
