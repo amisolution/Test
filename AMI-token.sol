@@ -1,4 +1,5 @@
-/*
+pragma solidity ^0.4.0;
+ /*
  * Token - is a smart contract interface 
  * for managing common functionality of 
  * a token.
@@ -108,8 +109,6 @@ contract StandardToken is TokenInterface {
     }
     
     
-
-    
     /**
      * transferFrom() - 
      *
@@ -206,7 +205,7 @@ contract StandardToken is TokenInterface {
  * @title AMIS
  * 
  * The official token enabling the smart metering contract.
- * This is the only way to acquire AMIS tokens from VC during the pre sale launch phase.
+ * Another option to acquire AMIS tokens from VC during the pre sale launch phase.
  *
  * https://github.com/amisolution/Test/AMI-token.sol
  *
@@ -221,12 +220,12 @@ contract AMIS is StandardToken {
     // Token abbreviation        
     string public symbol = "AMIS";
     
-    // 1 ether = 200 AMIS
-    uint BASE_PRICE = 200;
-    // 1 ether = 150 AMIS
-    uint MID_PRICE = 150;
-    // 1 ether = 100 AMIS
-    uint FIN_PRICE = 100;
+    // 1 ether = 2000 AMIS
+    uint BASE_PRICE = 2000;
+    // 1 ether = 1500 AMIS
+    uint MID_PRICE = 1500;
+    // 1 ether = 1000 AMIS
+    uint FIN_PRICE = 1000;
     // Safety cap
     uint SAFETY_LIMIT = 200000 ether;
     // Zeros after the point
@@ -266,11 +265,11 @@ contract AMIS is StandardToken {
         milestones = milestones_struct(
         
           1476799200,  // P1: GMT: 18-Jan-2017 14:00  => The Sale Starts
-          1478181600,  // P2: GMT: 03-Feb-2016 14:00  => 1st Price Ladder 
-          1479391200,  // P3: GMT: 17-Mar-2016 14:00  => Price Stable, 
+          1478181600,  // P2: GMT: 03-Feb-2017 14:00  => 1st Price Ladder 
+          1479391200,  // P3: GMT: 17-Mar-2017 14:00  => Price Stable, 
                        //                                AMIS sell Start
-          1480600800,  // P4: GMT: 01-Apr-2016 14:00  => 2nd Price Ladder
-          1481810400,  // P5: GMT: 15-May-2016 14:00  => Price Stable
+          1480600800,  // P4: GMT: 01-Apr-2017 14:00  => 2nd Price Ladder
+          1481810400,  // P5: GMT: 15-May-2017 14:00  => Price Stable
           1482415200   // P6: GMT: 31-Dec-2017 14:00  => Sale Ends, 
         );
                 
@@ -300,7 +299,7 @@ contract AMIS is StandardToken {
      * 
      * @param holder token holder
      */
-    function createHKG(address holder) payable {
+    function createAMIS(address holder) payable {
         
         if (now < milestones.p1) throw;
         if (now >= milestones.p6) throw;
@@ -393,4 +392,4 @@ contract AMIS is StandardToken {
         return totalValue;  
     }
 }
-contract AMIS is HEStandardToken(2000000000, "AMIS", 3, "AMIS") {}
+contract AMIS is StandardToken(2000000000, "AMIS", 3, "AMIS") {}
