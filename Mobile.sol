@@ -57,11 +57,11 @@ contract ContractDestruction{
 		suicide(owner);
 	}
     
-    function ownerBalanceChecker() public 
-    {
+    	function ownerBalanceChecker() public 
+    	{
         owner = msg.sender; 								 // msg is a global variable
         ownerbalance = owner.balance;
-    }
+    	}
 
 	function getContractAddress() constant returns (address) 
 	{
@@ -71,12 +71,12 @@ contract ContractDestruction{
 	function getOwnerBalanceOld() constant returns (uint)     // Will return the owner's balance AT THE TIME THIS CONTRACT WAS CREATED
 	{
         return ownerbalance;
-    }
+    	}
     
-    function getOwnerBalanceNow() constant returns (uint)  // Will return owner's balance NOW
-    {
+    	function getOwnerBalanceNow() constant returns (uint)  // Will return owner's balance NOW
+    	{
         return owner.balance;
-    }
+    	}
 }
 
 contract MyUserName is ContractDestruction{
