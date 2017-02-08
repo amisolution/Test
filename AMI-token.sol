@@ -1,11 +1,12 @@
-pragma solidity ^0.4.0;
- /*
+pragma solidity ^0.4.8;
+
+ /**
  * Token - is a smart contract interface 
  * for managing common functionality of 
  * a token.
  *
  * ERC.20 Token standard: https://github.com/eth ereum/EIPs/issues/20
- */
+ /
 contract TokenInterface {
 
         
@@ -20,7 +21,7 @@ contract TokenInterface {
      *  @param owner - account owner
      *  
      *  @return the value of balance 
-     */                               
+     /                               
     function balanceOf(address owner) constant returns (uint256 balance);
     
     function transfer(address to, uint256 value) returns (bool success);
@@ -37,7 +38,7 @@ contract TokenInterface {
      * 
      *  @return true in case of succes, otherwise failure
      * 
-     */
+     /
     function approve(address spender, uint256 value) returns (bool success);
 
     /**
@@ -50,22 +51,21 @@ contract TokenInterface {
      *  
      *  @return - remaining right to spend 
      * 
-     */
+     /
     function allowance(address owner, address spender) constant returns (uint256 remaining);
 
-    // events notifications
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-/*
- * StandardToken - is a smart contract  
- * for managing common functionality of 
- * a token.
- *
- * ERC.20 Token standard: 
- *         https://github.com/eth ereum/EIPs/issues/20
- */
+    /**
+    * StandardToken - is a smart contract  
+    * for managing common functionality of 
+    * a token.
+    *
+    * ERC.20 Token standard: 
+    *         https://github.com/eth ereum/EIPs/issues/20
+    /
 contract StandardToken is TokenInterface {
 
 
@@ -89,7 +89,7 @@ contract StandardToken is TokenInterface {
      *  @param value - ammount of tokens to transfer
      *
      *  @return - success / failure of the transaction
-     */    
+     /    
     function transfer(address to, uint256 value) returns (bool success) {
         
         
@@ -117,7 +117,7 @@ contract StandardToken is TokenInterface {
      *  @param value - 
      *
      *  @return 
-     */
+     /
     function transferFrom(address from, address to, uint256 value) returns (bool success) {
     
         if ( balances[from] >= value && 
@@ -153,7 +153,7 @@ contract StandardToken is TokenInterface {
      *  @param owner - account owner
      *  
      *  @return the value of balance 
-     */                               
+     /                               
     function balanceOf(address owner) constant returns (uint256 balance) {
         return balances[owner];
     }
@@ -170,7 +170,7 @@ contract StandardToken is TokenInterface {
      * 
      *  @return true in case of succes, otherwise failure
      * 
-     */
+     /
     function approve(address spender, uint256 value) returns (bool success) {
         
         // now spender can use balance in 
@@ -193,23 +193,22 @@ contract StandardToken is TokenInterface {
      *  
      *  @return - remaining right to spend 
      * 
-     */
+     /
     function allowance(address owner, address spender) constant returns (uint256 remaining) {
       return allowed[owner][spender];
     }
 
 }
 
-/**
- *
- * @title AMIS
- * 
- * The official token enabling the smart metering contract.
- * Another option to acquire AMIS tokens from VC during the pre sale launch phase.
- *
- * https://github.com/amisolution/Test/AMI-token.sol
- *
- */
+    /**
+    * @title AMIS
+    * 
+    * The official token enabling the smart metering contract.
+    * Another option to acquire AMIS tokens from VC during the pre sale launch phase.
+    *
+    * https://github.com/amisolution/Test/AMI-token.sol
+    *
+    /
 contract AMIS is StandardToken {
 
     // Name of the token    
@@ -257,7 +256,7 @@ contract AMIS is StandardToken {
      * HackerGold contract itself does not hold any value
      * 
      * @param multisig address of MultiSig wallet which will hold the value
-     */
+     /
     function AMIS(address multisig) {
         
         wallet = multisig;
@@ -282,7 +281,7 @@ contract AMIS is StandardToken {
      * 
      * It calls to createAMIS function with msg.sender 
      * as a value for holder argument
-     */
+     /
     function () payable {
         createAMIS(msg.sender);
     }
@@ -299,7 +298,7 @@ contract AMIS is StandardToken {
      * It means that if stored AMIS balance is 100000, then its real value is 100 AMIS
      * 
      * @param holder token holder
-     */
+     /
     function createAMIS(address holder) payable {
         
         if (now < milestones.p1) throw;
@@ -322,7 +321,7 @@ contract AMIS is StandardToken {
      * Denotes complete price structure during the sale.
      *
      * @return AMIS amount per 1 ETH for the current moment in time
-     */
+     /
     function getPrice() constant returns (uint result) {
         
         if (now < milestones.p1) return 0;
@@ -368,29 +367,25 @@ contract AMIS is StandardToken {
      * Thus, result of this function should be divided by 1000 to get AMIS value
      * 
      * @return result stored AMIS amount
-     */
+     /
     function getTotalSupply() constant returns (uint result) {
         return totalSupply;
     } 
 
     /**
      * It is used for test purposes.
-     * 
      * Returns the result of 'now' statement of Solidity language
-     * 
      * @return unix timestamp for current moment in time
-     */
+     /
     function getNow() constant returns (uint result) {
         return now;
     }
 
     /**
      * Returns total value passed through the contract
-     * 
      * @return result total value in wei
-     */
+     /
     function getTotalValue() constant returns (uint result) {
         return totalValue;  
     }
 }
-
